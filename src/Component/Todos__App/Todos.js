@@ -5,12 +5,7 @@ export default function Todos(props) {
   return (
     <div>
       {props.todos.map((todo) => (
-        <Todo
-          key={todo.id}
-          todo={todo.newTodo}
-          id={todo.id}
-          onTodosId={props.onTodosId}
-        />
+        <Todo todo={todo} key={todo.id} onTodoId={props.onTodoId} />
       ))}
     </div>
   );

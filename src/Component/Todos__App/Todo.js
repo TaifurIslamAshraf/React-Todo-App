@@ -1,10 +1,10 @@
 import React from "react";
 
 export default function Todo(props) {
-  const { title, desc } = props.todo;
+  const { title, desc } = props.todo.todos;
 
-  const deleteHandleTodo = () => {
-    props.onTodosId(props.id);
+  const handleDeleteTodo = () => {
+    props.onTodoId(props.todo.id);
   };
 
   return (
@@ -14,7 +14,7 @@ export default function Todo(props) {
         <p>{desc}</p>
       </div>
       <div>
-        <button onClick={deleteHandleTodo}>
+        <button onClick={handleDeleteTodo}>
           <i className="fa fa-trash fa-2x"></i>
         </button>
       </div>

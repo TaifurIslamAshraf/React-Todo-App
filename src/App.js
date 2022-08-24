@@ -1,6 +1,6 @@
 import React from "react";
 import "font-awesome/css/font-awesome.min.css";
-import Home from "./Component/Todo__App/Home";
+import Home from "./Component/Todos__App/Home";
 
 function App() {
   return (

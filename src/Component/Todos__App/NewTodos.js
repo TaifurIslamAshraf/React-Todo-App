@@ -1,36 +1,37 @@
 import React, { useState } from "react";
 
-export default function NewTodo(props) {
-  const [value, setValue] = useState({ title: "", desc: "" });
-  const { title, desc } = value;
+export default function NewTodos(props) {
+  const [todo, setTodo] = useState({ title: "", desc: "" });
+  const { title, desc } = todo;
 
-  const onChangeHandler = (e) => {
-    const name = e.target.name;
-    setValue((prevValue) => {
-      return { ...prevValue, [name]: e.target.value };
-    });
+  const handleTodoChange = (e) => {
+    const fildName = e.target.name;
+    setTodo({ ...todo, [fildName]: e.target.value });
   };
 
-  const submitDataHandler = (e) => {
+  const handleSubmitTodo = (e) => {
+    props.onNewTodo(todo);
     e.preventDefault();
-    props.OnNewTodo(value);
-    setValue({ title: "", desc: "" });
+    setTodo({
+      title: "",
+      desc: "",
+    });
   };
 
   return (
     <div className="form-container">
       <h1>Todo App</h1>
-      <form action="" onSubmit={submitDataHandler}>
+      <form action="">
         <div className="title__div">
           <label htmlFor="title">Title</label>
           <br />
           <input
-            onChange={onChangeHandler}
+            onChange={handleTodoChange}
             type="text"
             name="title"
             id="title"
-            value={title}
             required
+            value={title}
             placeholder="Enter Todo Title"
           />
         </div>
@@ -38,17 +39,16 @@ export default function NewTodo(props) {
           <label htmlFor="desc">Message</label>
           <br />
           <textarea
-            onChange={onChangeHandler}
+            onChange={handleTodoChange}
             name="desc"
             id="desc"
             cols="30"
             rows="5"
-            value={desc}
             required
-            placeholder="Type Your Message"
-          ></textarea>
+            value={desc}
+            placeholder="Type Your Message"></textarea>
         </div>
-        <div className="btn">
+        <div className="btn" onClick={handleSubmitTodo}>
           <button type="submit">Submit</button>
         </div>
       </form>
